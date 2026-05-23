@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fashion Lookbook</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, pink, lavender);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: purple;
+}
+
+section {
+    margin: 30px auto;
+    width: 70%;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px gray;
+}
+
+table {
+    margin: auto;
+}
+
+img {
+    border-radius: 10px;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+img:hover {
+    transform: scale(1.1);
+}
+
+button {
+    padding: 10px 20px;
+    background: purple;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    background: darkviolet;
+}
+
+/* Forms Styling */
+form {
+    margin-top: 20px;
+}
+
+input, textarea, select {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+.order-box {
+    background: #f9f0ff;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+footer {
+    background: purple;
+    color: white;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>My Fashion Lookbook</h1>
+<p><i>Explore different fashion styles</i></p>
+
+<hr>
+
+<!-- Western Style -->
+<section>
+<h2>Western Style</h2>
+<table border="1" cellpadding="10">
+<tr>
+<td>
+<img onclick="showMessage('Western Style')" 
+src="https://i.pinimg.com/originals/c0/47/5c/c0475cd83e0cd29e9d112f7f19fc668f.jpg" 
+width="250">
+</td>
+
+<td>
+<b>Western outfit</b><br><br>
+Simple jeans and t-shirt look for daily wear.<br>
+Comfortable and stylish for everyday fashion.<br><br>
+
+<b>Price:</b> ₹1200
+</td>
+</tr>
+</table>
+</section>
+
+<!-- Party Style -->
+<section>
+<h2>Party Style</h2>
+<table border="1" cellpadding="10">
+<tr>
+<td>
+<img onclick="showMessage('Party Style')" 
+src="https://christmas.365greetings.com/wp-content/uploads/2017/11/Christmas-Party-Outfit-Ideas-4.jpg" 
+width="250">
+</td>
+
+<td>
+<b>Party outfit</b><br><br>
+Trendy and stylish outfit perfect for parties.<br>
+Shiny, bold and fashionable look.<br><br>
+
+<b>Price:</b> ₹2500
+</td>
+</tr>
+</table>
+</section>
+
+<!-- Traditional Style -->
+<section>
+<h2>Traditional Style</h2>
+<table border="1" cellpadding="10">
+<tr>
+<td>
+<img onclick="showMessage('Traditional Style')" 
+src="https://i.pinimg.com/originals/48/71/f5/4871f5d737e8f73cc0f39b38ed4d4659.jpg" 
+width="250">
+</td>
+
+<td>
+<b>Traditional outfit</b><br><br>
+Elegant traditional fashion style.<br>
+Perfect for festivals and cultural events.<br><br>
+
+<b>Price:</b> ₹3000
+</td>
+</tr>
+</table>
+</section>
+
+<!-- amazon Link Button -->
+<h3 id="coming">New fashion styles coming soon! Stay tuned</h3>
+
+<a href="https://www.amazon.in" target="_blank">
+<button>Click for Surprise</button>
+</a>
+
+<br><br>
+
+<!-- Like Button -->
+<button onclick="likePage()">Like</button>
+<p id="likes">Likes: 0</p>
+
+<!-- Order Form -->
+<section class="order-box">
+<h2>Order Details</h2>
+
+<form onsubmit="placeOrder(event)">
+
+<input type="text" id="customerName" placeholder="Enter your name">
+
+<input type="text" id="address" placeholder="Enter delivery address">
+
+<select id="outfit">
+<option value="">Select Outfit</option>
+<option value="Western Style - ₹1200">Western Style - ₹1200</option>
+<option value="Party Style - ₹2500">Party Style - ₹2500</option>
+<option value="Traditional Style - ₹3000">Traditional Style - ₹3000</option>
+</select>
+
+<input type="number" id="quantity" placeholder="Enter quantity">
+
+<button type="submit">Place Order</button>
+
+</form>
+
+<p id="orderResponse"></p>
+
+</section>
+
+<!-- Feedback Form -->
+<section>
+<h2>Feedback Form</h2>
+
+<form onsubmit="submitFeedback(event)">
+
+<input type="text" id="name" placeholder="Enter your name">
+
+<input type="email" id="email" placeholder="Enter your email">
+
+<textarea id="message" placeholder="Your feedback..."></textarea>
+
+<button type="submit">Submit Feedback</button>
+
+</form>
+
+<p id="response"></p>
+
+</section>
+
+<!-- Footer -->
+<footer>
+<h3>Contact</h3>
+<p>Email: fashionlookbook@email.com</p>
+<p>Follow for more fashion inspiration!</p>
+</footer>
+
+<script>
+
+// Image click message
+function showMessage(style) {
+    alert("You clicked on " + style + " outfit!");
+}
+
+// Like counter
+let count = 0;
+
+function likePage() {
+    count++;
+    document.getElementById("likes").innerHTML =
+    "Likes: " + count;
+}
+
+// Feedback form validation
+function submitFeedback(event) {
+
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("message").value;
+
+    if(name === "" || email === "" || message === "") {
+
+        alert("Please fill all fields!");
+
+    } else {
+
+        document.getElementById("response").innerHTML =
+        "Thank you, " + name + "! Your feedback has been submitted.";
+    }
+}
+
+// Order Form
+function placeOrder(event) {
+
+    event.preventDefault();
+
+    let customerName =
+    document.getElementById("customerName").value;
+
+    let address =
+    document.getElementById("address").value;
+
+    let outfit =
+    document.getElementById("outfit").value;
+
+    let quantity =
+    document.getElementById("quantity").value;
+
+    if(customerName === "" || address === "" ||
+       outfit === "" || quantity === "") {
+
+        alert("Please fill all order details!");
+
+    } else {
+
+        document.getElementById("orderResponse").innerHTML =
+        "Thank you " + customerName +
+        "! Your order for " + quantity +
+        " item(s) of " + outfit +
+        " has been placed successfully.";
+    }
+}
+
+</script>
+
+</body>
+</html>
